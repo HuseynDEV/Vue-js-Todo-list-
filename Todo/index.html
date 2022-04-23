@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@next"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+        .red {
+            background: rgb(243, 110, 110);
+        }
+
+        .yellow {
+            background: rgb(78, 223, 78);
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+    <div id="app">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-2">
+                    <input class="form-control m-3" type="text" @keydown.enter="Ekle">
+                    <li :class="{yellow:todo.deger}" v-if="todoList.length>0"
+                        class=" red list-group-item d-flex justify-content-between" v-for="todo in todoList">
+                        <div>
+                            <input type="checkbox" v-model="todo.deger" class="form-check-input me-3" :id="todo.id">
+                            <label :for="todo.id">{{todo.text}}</label>
+                        </div>
+                        <button class="btn btn-danger" @click="Silme(todo)">Sil</button>
+
+                    </li>
+                    <p v-else class=" alert"> Hec bir elave yoxdur </p>
+                    <small class="text-success me-3">Tamamlanan {{Finished}}</small>
+                    <small class="text-danger">Tamamlanmayan {{NotFinished}}</small>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
